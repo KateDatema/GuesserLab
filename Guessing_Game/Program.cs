@@ -32,13 +32,13 @@ namespace GuessingGame
              
 
                 }
-                bruteForceTotal = lastTry + tries;
-                lastTry = tries;
-                int bfAverage = bruteForceTotal / loopRound;
+                //bruteForceTotal = lastTry + tries;
+                //lastTry = tries;
+                //int bfAverage = bruteForceTotal / loopRound;
                 
 
                 Console.WriteLine($"it took BruteForce {tries} to guess {secret}");
-                Console.WriteLine($"BruteForce average tries currently is {bfAverage}");
+                //Console.WriteLine($"BruteForce average tries currently is {bfAverage}");
 
 
 
@@ -66,9 +66,9 @@ namespace GuessingGame
                     //Console.WriteLine();
                     i++;
                 }
-                bruteForceTotal = lastTry + i;
-                lastTry = tries;
-                int bfAverage = bruteForceTotal / loopRound;
+                //bruteForceTotal = lastTry + i;
+                //lastTry = tries;
+                //int bfAverage = bruteForceTotal / loopRound;
                 Console.WriteLine($"The Elimination took {current} times to guess the number {secret} ");
                 //foreach (int number in triedNumbers)
                 //{ Console.WriteLine(number); }
