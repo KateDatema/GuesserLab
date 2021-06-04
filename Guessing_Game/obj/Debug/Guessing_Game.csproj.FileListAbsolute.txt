@@ -1,0 +1,6 @@
+/Users/katedatema/Projects/Guessing_Game/Guessing_Game/bin/Debug/Guessing_Game.exe
+/Users/katedatema/Projects/Guessing_Game/Guessing_Game/bin/Debug/Guessing_Game.pdb
+/Users/katedatema/Projects/Guessing_Game/Guessing_Game/obj/Debug/Guessing_Game.csprojAssemblyReference.cache
+/Users/katedatema/Projects/Guessing_Game/Guessing_Game/obj/Debug/Guessing_Game.csproj.CoreCompileInputs.cache
+/Users/katedatema/Projects/Guessing_Game/Guessing_Game/obj/Debug/Guessing_Game.exe
+/Users/katedatema/Projects/Guessing_Game/Guessing_Game/obj/Debug/Guessing_Game.pdb
