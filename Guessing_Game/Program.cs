@@ -9,7 +9,7 @@ namespace GuessingGame
         static void Main(string[] args)
         {
             bool goOn = true;
-            int lastTry = 0;
+            //int lastTry = 0;
             int loopRound = 1; 
             while (goOn == true)
             {
@@ -17,7 +17,7 @@ namespace GuessingGame
                 int secret = r.Next(1, 101);
                 int tries = 0;
                 string response = "";
-                int bruteForceTotal;
+                //int bruteForceTotal;
 
 
                 while (response != "Match!")
@@ -69,7 +69,7 @@ namespace GuessingGame
                 //bruteForceTotal = lastTry + i;
                 //lastTry = tries;
                 //int bfAverage = bruteForceTotal / loopRound;
-                Console.WriteLine($"The Elimination took {current} times to guess the number {secret} ");
+                Console.WriteLine($"The Elimination took {i} times to guess the number {secret} ");
                 //foreach (int number in triedNumbers)
                 //{ Console.WriteLine(number); }
                 loopRound++;
@@ -132,11 +132,13 @@ namespace GuessingGame
             if (triedNumbers.Contains(randomGuess))
             {
                 randomGuess = r.Next(1, 101);
+   
             }
 
             else
             {
                 triedNumbers.Add(randomGuess);
+                
             }
            
             
