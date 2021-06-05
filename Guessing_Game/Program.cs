@@ -8,75 +8,90 @@ namespace GuessingGame
     {
         static void Main(string[] args)
         {
-            bool goOn = true;
-            //int lastTry = 0;
-            int loopRound = 1; 
-            while (goOn == true)
+            //bool goOn = true;
+
+            //setting up our random number
+            //Random r = new Random();
+            int runs = 1;
+            //setting up our list so we can hold how many rounds it took and get the best, worst, and average
+            List<int> bruteForceTries = new List<int>();
+            List<int> elimatation = new List<int>();
+            List<int> randomGuesser = new List<int>();
+
+            while (runs <= 100)
             {
-                Random r = new Random();
-                int secret = r.Next(1, 101);
-                int tries = 0;
+                int secret = runs;
+                runs++;
+                //setting up our gobal var for string response
                 string response = "";
-                //int bruteForceTotal;
 
 
+                //setting up a var for BruteForce to count rounds with
+                int tries = 0;
+                //running BruteForce function until it finds a match
                 while (response != "Match!")
                 {
+                    //running our method to get a num
                     int num = BruteForce(tries);
-
+                    // runing our num threw the guess method (too see if it's right)
                     response = Guess(num, secret);
-                    //Console.WriteLine(response);
-                    //Console.WriteLine();
-
+                    // adds a try every round so we can count how long it takes to get to a match
                     tries++;
-             
-
                 }
-                //bruteForceTotal = lastTry + tries;
-                //lastTry = tries;
-                //int bfAverage = bruteForceTotal / loopRound;
+
+                bruteForceTries.Add(tries);
+                //Console.WriteLine($"it took BruteForce {tries} to guess {secret}");
+                //adding the tries after the while loop breaks so that we can find average..
                 
 
-                Console.WriteLine($"it took BruteForce {tries} to guess {secret}");
-                //Console.WriteLine($"BruteForce average tries currently is {bfAverage}");
-
-
-
-                Console.WriteLine();
-                int current = 1;
+                // setting up a var to count rounds for the random guesser
+                int current = 0;
                 response = "";
                 while (response != "Match!")
                 {
                     int num = RandomGuesser();
                     response = Guess(num, secret);
-                    //Console.WriteLine(response);
-                    //Console.WriteLine();
                     current++;
                 }
 
-                Console.WriteLine($"The Random Guesser took {current} times to guess the number {secret} "); Console.WriteLine();
+                //Console.WriteLine($"The Random Guesser took {current} times to guess the number {secret} "); Console.WriteLine();
+                randomGuesser.Add(current);
+
                 List<int> triedNumbers = new List<int>();
+
                 int i = 1;
                 response = "";
                 while (response != "Match!")
                 {
                     int num = Elimination(triedNumbers);
                     response = Guess(num, secret);
-                    //Console.WriteLine(response);
-                    //Console.WriteLine();
                     i++;
                 }
-                //bruteForceTotal = lastTry + i;
-                //lastTry = tries;
-                //int bfAverage = bruteForceTotal / loopRound;
-                Console.WriteLine($"The Elimination took {i} times to guess the number {secret} ");
-                //foreach (int number in triedNumbers)
-                //{ Console.WriteLine(number); }
-                loopRound++;
-                goOn=GetContinue();
+                //Console.WriteLine($"The Elimination took {i} times to guess the number {secret} ");
+                elimatation.Add(i);
+
+                //analzing results
+                Console.WriteLine();
+                AnalzyeList(bruteForceTries, "Brute Force");
+                Console.WriteLine();
+                AnalzyeList(elimatation, "Elimatation");
+                Console.WriteLine();
+                AnalzyeList(randomGuesser, "random Guesser");
                 
             }
 
+        }
+
+        public static void AnalzyeList(List<int> attempts, string guesserName)
+        {
+
+            int best = attempts.Min();
+            int worst = attempts.Max();
+            double average = attempts.Average();
+
+            Console.WriteLine($"Best {guesserName} Case: " + best);
+            Console.WriteLine($"Worst {guesserName} Case: " + worst);
+            Console.WriteLine($"Average {guesserName} Case: " + average);
         }
 
         public static int GetUserGuess()
